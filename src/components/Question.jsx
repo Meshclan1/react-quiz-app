@@ -5,21 +5,21 @@ import QUESTIONS from "../questions.js";
 
 export default function Question({ index, onSelectAnswer, onSkipAnswer }) {
   const [answer, setAnswer] = useState({ selectedAnswer: "", isCorrect: null });
+
+  let timer = 10000;
+
+  if (answer.selectedAnswer) {
+    timer = 1000;
+  }
+
+  if (answer.isCorrect !== null) {
+    timer = 2000;
+  }
   function handleSelectAnswer(answer) {
     setAnswer({
       selectedAnswer: answer,
       isCorrect: null,
     });
-
-    let timer = 10000;
-
-    if (answer.selectedAnswer) {
-      timer = 1000;
-    }
-
-    if (answer.isCorrect !== null) {
-      timer = 2000;
-    }
 
     setTimeout(() => {
       setAnswer({
