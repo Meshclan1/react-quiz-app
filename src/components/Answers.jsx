@@ -10,7 +10,7 @@ export default function Answers({
 
   if (!shuffledAnswers.current) {
     shuffledAnswers.current = [...answers];
-    shuffledAnswers.sort(() => Math.random() - 0.5);
+    shuffledAnswers.current.sort(() => Math.random() - 0.5);
   }
 
   return (
@@ -31,7 +31,11 @@ export default function Answers({
 
         return (
           <li key={answer} className="answer">
-            <button onClick={() => onSelect(answer)} className={cssClass}>
+            <button
+              onClick={() => onSelect(answer)}
+              className={cssClass}
+              disabled={answerState !== ""}
+            >
               {answer}
             </button>
           </li>
